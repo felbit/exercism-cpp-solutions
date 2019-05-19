@@ -1,0 +1,5 @@
+*/.exercism
+*/.vscode/
+*/build
+
+.DS_Store
