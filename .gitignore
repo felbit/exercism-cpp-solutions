@@ -1,5 +1,8 @@
 */.exercism
 */.vscode/
 */build
+*/cmake-build-debug/
+*/tags
+tags
 
 .DS_Store
