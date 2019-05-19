@@ -52,7 +52,6 @@ TEST_CASE("queens_cannot_attack")
     REQUIRE(!board.can_attack());
 }
 
-#if defined(EXERCISM_RUN_ALL_TESTS)
 TEST_CASE("queens_can_attack_when_they_are_on_the_same_row")
 {
     const queen_attack::chess_board board{std::make_pair(2, 4), std::make_pair(2, 7)};
@@ -101,4 +100,3 @@ TEST_CASE("queens_cannot_attack_if_not_on_same_row_column_or_diagonal")
 
     REQUIRE(!board.can_attack());
 }
-#endif

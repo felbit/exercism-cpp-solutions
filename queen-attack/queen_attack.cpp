@@ -19,4 +19,11 @@ namespace queen_attack
         return m_white;
     }
 
+    bool chess_board::can_attack() const
+    {
+        return (m_white.first == m_black.first)
+               || (m_white.second == m_black.second) 
+               || (std::abs(m_white.first - m_white.second) == std::abs(m_black.first - m_black.second));
+    }
+
 }

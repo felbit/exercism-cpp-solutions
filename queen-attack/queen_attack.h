@@ -1,3 +1,4 @@
+#include <cmath>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -19,6 +20,7 @@ namespace queen_attack
         bool can_attack() const;
 
         // static_cast<std::string> operator
+        // TODO: Think about this part, it's ugly
         operator std::string() const
         {
             std::string board = "";
