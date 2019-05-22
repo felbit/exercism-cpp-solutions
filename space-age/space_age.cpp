@@ -13,39 +13,44 @@ namespace space_age {
         return m_seconds / 31557600.0;
     }
 
+    double space_age::per_earth_years(double planet_years) const
+    {
+        return on_earth() / planet_years;
+    }
+
     double space_age::on_mercury() const
     {
-        return on_earth() / 0.2408467;
+        return per_earth_years(0.2408467);
     }
 
     double space_age::on_venus() const
     {
-        return on_earth() / 0.61519726;
+        return per_earth_years(0.61519726);
     }
     
     double space_age::on_mars() const
     {
-        return on_earth() / 1.8808158;
+        return per_earth_years(1.8808158);
     }
 
     double space_age::on_jupiter() const
     {
-        return on_earth() / 11.862615;
+        return per_earth_years(11.862615);
     }
 
     double space_age::on_saturn() const
     {
-        return on_earth() / 29.447498;
+        return per_earth_years(29.447498);
     }
 
     double space_age::on_uranus() const
     {
-        return on_earth() / 84.016846;
+        return per_earth_years(84.016846);
     }
 
     double space_age::on_neptune() const
     {
-        return on_earth() / 164.79132;
+        return per_earth_years(164.79132);
     }
 
 }

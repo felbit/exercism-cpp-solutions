@@ -18,6 +18,7 @@ namespace space_age {
         double on_neptune() const;
     
     private:
+        double per_earth_years(double) const;
         unsigned long long int m_seconds;
     };
 
