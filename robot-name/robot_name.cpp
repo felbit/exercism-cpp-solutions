@@ -1,33 +1,45 @@
 #include "robot_name.h"
 
-#include <iostream>
-
 namespace robot_name
 {
-    robot::robot()
+    robot::robot() : m_robot_name(generate_name()) {}
+
+    std::string robot::name() const { return m_robot_name; }
+
+    void robot::reset() { m_robot_name = generate_name(); }
+
+    std::string robot::generate_name() const
     {
-        // seeding the random number generator
-        std::srand(static_cast<int>(time(0)));
+        static std::string prefix = "AA";
+        static unsigned short unit_number = 0;
 
-        std::string name(5, '0');
+        std::ostringstream name;
+        name << prefix << std::setw(3) << std::setfill('0') << unit_number;
 
-        name[0] = 'A' + std::rand() % 26;
-        name[1] = 'A' + std::rand() % 26;
-        name[2] = '0' + std::rand() % 10;
-        name[3] = '0' + std::rand() % 10;
-        name[4] = '0' + std::rand() % 10;
+        if (unit_number == 999) {
+            prefix = next_prefix(prefix);
+            unit_number = 0;
+        } else {
+            unit_number++;
+        }
 
-        m_robot_name = name;
+        return name.str();
     }
 
-    std::string robot::name() const
+    std::string robot::next_prefix(const std::string& prefix) const
     {
-        return m_robot_name;
-    }
+        std::string tmp = prefix;
+        const std::string letters {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
 
-    void robot::reset()
-    {
-        // foo
+        if (prefix[1] == letters.back()) {
+            if (prefix[0] == letters.back()) throw std::range_error("Prefix combinations exhausted.");
+            tmp[0] = letters[letters.find(tmp[0]) + 1];
+            tmp[1] = letters[0];
+        } else {
+            tmp[1] = letters[letters.find(tmp[1]) + 1];
+        }
+
+        return tmp;
     }
 
 } // namespace robot_name

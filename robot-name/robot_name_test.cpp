@@ -52,7 +52,6 @@ TEST_CASE("is_able_to_reset_name")
     REQUIRE(original_name != robot.name());
 }
 
-#if defined(EXERCISM_RUN_ALL_TESTS)
 TEST_CASE("exhausting_digits_yields_different_names")
 {
     robot_name::robot robot;
@@ -66,4 +65,3 @@ TEST_CASE("exhausting_digits_yields_different_names")
         names.insert(robot.name());
     }
 }
-#endif
