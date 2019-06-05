@@ -5,10 +5,7 @@ namespace grains
 
     ull square(unsigned short _square)
     {
-        if (_square == 1)
-            return 1ULL;
-        else
-            return 2 * square(_square - 1);
+        return 1ULL << (_square - 1);
     }
 
     ull total()
